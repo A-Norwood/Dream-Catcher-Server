@@ -1,15 +1,13 @@
 const express = require('express')
 const passport = require('passport')
 const Dream = require('./../models/dream')
-// const customErrors = require('../../lib/custom_errors')
+const customErrors = require('../../lib/custom_errors')
 // we'll use this function to send 404 when non-existant document is requested
-// const handle404 = customErrors.handle404
+const handle404 = customErrors.handle404
 // we'll use this function to send 401 when a user tries to modify a resource
 // that's owned by someone else
-// const requireOwnership = customErrors.requireOwnership
-// this is middleware that will remove blank fields from `req.body`, e.g.
-// { example: { title: '', text: 'foo' } } -> { example: { text: 'foo' } }
-// const removeBlanks = require('../../lib/remove_blank_fields')
+const requireOwnership = customErrors.requireOwnership
+const removeBlanks = require('../../lib/remove_blank_fields')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `req.user`
@@ -37,6 +35,41 @@ router.post('/dreams', requireToken, (req, res, next) => {
     .then(dream => {
       res.status(201).json({ dream: dream.toObject() })
     })
+    .catch(next)
+})
+
+// SHOW
+// GET /dreams/:id
+router.get('/dreams/:id', requireToken, (req, res, next) => {
+  Dream.findById(req.params.id)
+    .then(handle404)
+    .then(dream => res.status(200).json({ dream: dream.toObject() }))
+    .catch(next)
+})
+
+// UPDATE
+// PATCH /dreams/:id
+router.patch('/dreams/:id', requireToken, removeBlanks, (req, res, next) => {
+  delete req.body.dream.owner
+  Dream.findById(req.params.id)
+    .then(dream => {
+      requireOwnership(req, dream)
+      return dream.updateOne(req.body.dream)
+    })
+    .then(dream => res.sendStatus(204).json({ dream: dream }))
+    .catch(next)
+})
+
+// DESTROY
+// DELETE /dreams/:id
+router.delete('/dreams/:id', requireToken, (req, res, next) => {
+  Dream.findById(req.params.id)
+    .then(handle404)
+    .then(dream => {
+      requireOwnership(req, dream)
+      dream.deleteOne()
+    })
+    .then(() => res.sendStatus(204))
     .catch(next)
 })
 
