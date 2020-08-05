@@ -14,8 +14,10 @@
 - MongoDB
 - cURL Scripts
 - -Heroku
+- -Keynote
 
 ## Planning
+I started this project by first coming up with an idea that I found interesting and also useful to a user. I created an ERD and wireframes for my project for reference. To start the actual coding portion of the project I began by downloading the browser template provided, and built my routes and testing with cURL scripts along the way. 
 
 
 ## API Information
