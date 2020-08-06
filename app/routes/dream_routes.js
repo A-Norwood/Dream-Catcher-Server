@@ -19,7 +19,7 @@ const router = express.Router()
 // GET all dreams
 router.get('/dreams', requireToken, (req, res, next) => {
   Dream.find({'owner': req.user.id})
-    .populate('dream')
+    .populate('dreams')
     .then(dream => {
       return dream.map(dream => dream.toObject())
     })
