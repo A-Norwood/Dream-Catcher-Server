@@ -1,5 +1,5 @@
 # Dream Catcher App
-
+Have you ever woken up from a dream and thought "Wow, I want to remember this dream, but I know if I don't log it now, I'll never remember."? Well, this application is perfect for you. Keep your phone or computer by your bed, and as soon as you wake up from that dream, log it with the Dream Catcher App! You can log the dream, go back and edit the dream, delete the dream if you just don't want to remember anymore, and go back and read through those dreams. No more trying to rack your brain for that dream you had 2 weeks ago. They are all here and organized in your dream log.
 
 ## Links
 - [Deployed Application]()
@@ -17,18 +17,18 @@
 - -Keynote
 
 ## Planning
-I started this project by first coming up with an idea that I found interesting and also useful to a user. I created an ERD and wireframes for my project for reference. To start the actual coding portion of the project I began by downloading the browser template provided, and built my routes and testing with cURL scripts along the way. 
+I started this project by first coming up with an idea that I found interesting and also useful to a user. I created an ERD and wireframes for my project for reference. To start the actual coding portion of the project I began by downloading the browser template provided, and built my routes and testing with cURL scripts along the way.
 
 
 ## API Information
 ### Dreams
 | Verb   | URI Pattern  | Controller#Action  |
 |:-------|:-------------|:-------------------|
-| GET    | `/lists`     | `lists#index`  |
-| GET    | `/lists/:id` | `lists#show`   |
-| POST   | `/lists`     | `lists#create` |
-| PATCH  | `/lists/:id` | `lists#update` |
-| DELETE | `/lists/:id` | `lists#destroy` |
+| GET    | `/dreams`     | `dreams#index`  |
+| GET    | `/dreams/:id` | `dreams#show`   |
+| POST   | `/dreams`     | `dreams#create` |
+| PATCH  | `/dreams/:id` | `dreams#update` |
+| DELETE | `/dreams/:id` | `dreams#destroy` |
 
 
 ### GET /dreams
@@ -37,7 +37,7 @@ Example Curl Request:
 #!/bin/sh
 
 API="http://localhost:4741"
-URL_PATH="/lists"
+URL_PATH="/dreams"
 
 curl "${API}${URL_PATH}" \
   --include \
@@ -50,8 +50,9 @@ echo
 
 Example Terminal Command:
 ```sh
-TOKEN="e1b600eee733edfdf6f56cf1b24da852" sh curl-scripts/lists/index.sh
+TOKEN="6a4694d27db15fdd39e16df0bd731a36" sh curl-scripts/dreams/index.sh
 ```
+
 
 Example API Response:
 ```md
@@ -60,22 +61,22 @@ X-Powered-By: Express
 Access-Control-Allow-Origin: http://localhost:7165
 Vary: Origin
 Content-Type: application/json; charset=utf-8
-Content-Length: 454
-ETag: W/"1c6-GH3GZSOHRpGQjUBgzMtZ8iZ92DQ"
-Date: Mon, 20 Jul 2020 01:56:43 GMT
+Content-Length: 381
+ETag: W/"17d-XHjSseEzShqteDDrC09uDUUfxKE"
+Date: Sun, 09 Aug 2020 15:33:33 GMT
 Connection: keep-alive
 
-{"lists":[{"_id":"5f14f919768319ab3a025d19","name":"Today's List","description":"Sunday 7-19-20","owner":"5f14f836768319ab3a025d18","items":[],"createdAt":"2020-07-20T01:53:29.177Z","updatedAt":"2020-07-20T01:53:29.177Z","__v":0},{"_id":"5f14f98f768319ab3a025d1a","name":"Tomorrow's List","description":"Sunday 7-20-20","owner":"5f14f836768319ab3a025d18","items":[],"createdAt":"2020-07-20T01:55:27.991Z","updatedAt":"2020-07-20T01:55:27.991Z","__v":0}]}
+{"dreams":[{"_id":"5f3016551bb8e2fa75d90dea","date":"2020-08-01T00:00:00.000Z","title":"Weirdest Dream Ever","location":"home","sleep_time":"10pm","wake_time":"7am","description":"my teeth fell out","quality":"fair","meaning":"changes are coming in my life","owner":"5f3015751bb8e2fa75d90de8","createdAt":"2020-08-09T15:29:25.588Z","updatedAt":"2020-08-09T15:29:25.588Z","__v":0}]}
 ```
 
 ---
-### GET /lists/:id
+### GET /dreams/:id
 Example Curl Request:
 ```sh
 #!/bin/sh
 
 API="http://localhost:4741"
-URL_PATH="/lists"
+URL_PATH="/dreams"
 
 curl "${API}${URL_PATH}/${ID}" \
   --include \
@@ -83,11 +84,12 @@ curl "${API}${URL_PATH}/${ID}" \
   --header "Authorization: Bearer ${TOKEN}"
 
 echo
+
 ```
 
 Example Terminal Command:
 ```sh
-ID=5f14f919768319ab3a025d19 TOKEN="e1b600eee733edfdf6f56cf1b24da852" sh curl-scripts/lists/show.sh
+TOKEN="6a4694d27db15fdd39e16df0bd731a36" ID="5f3016551bb8e2fa75d90dea" sh curl-scripts/dreams/show.sh
 ```
 
 Example API Response:
@@ -97,23 +99,24 @@ X-Powered-By: Express
 Access-Control-Allow-Origin: http://localhost:7165
 Vary: Origin
 Content-Type: application/json; charset=utf-8
-Content-Length: 228
-ETag: W/"e4-HJgOdo3Jm5dFRdzsiX+dzUU+mN4"
-Date: Mon, 20 Jul 2020 01:58:22 GMT
+Content-Length: 378
+ETag: W/"17a-wd9OqEq7kiRvzIY4GyNmuWcA6YI"
+Date: Sun, 09 Aug 2020 16:05:24 GMT
 Connection: keep-alive
 
-{"list":{"_id":"5f14f919768319ab3a025d19","name":"Today's List","description":"Sunday 7-19-20","owner":"5f14f836768319ab3a025d18","items":[],"createdAt":"2020-07-20T01:53:29.177Z","updatedAt":"2020-07-20T01:53:29.177Z","__v":0}}
+{"dream":{"_id":"5f3016551bb8e2fa75d90dea","date":"2020-08-01T00:00:00.000Z","title":"Weirdest Dream Ever","location":"home","sleep_time":"10pm","wake_time":"7am","description":"my teeth fell out","quality":"fair","meaning":"changes are coming in my life","owner":"5f3015751bb8e2fa75d90de8","createdAt":"2020-08-09T15:29:25.588Z","updatedAt":"2020-08-09T15:29:25.588Z","__v":0}}
+
 ```
 
 ---
-### POST /lists
+### POST /dreams
 Example Curl Request:
 
 ```sh
 #!/bin/bash
 
 API="http://localhost:4741"
-URL_PATH="/lists"
+URL_PATH="/dreams"
 
 curl "${API}${URL_PATH}" \
   --include \
@@ -121,9 +124,15 @@ curl "${API}${URL_PATH}" \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
-    "list": {
-      "name": "'"${NAME}"'",
-      "description": "'"${DESCRIPTION}"'"
+    "dream": {
+      "date": "'"${DATE}"'",
+      "title": "'"${TITLE}"'",
+      "location": "'"${LOCATION}"'",
+      "sleep_time": "'"${SLEEP}"'",
+      "wake_time": "'"${WAKE}"'",
+      "description": "'"${DESCRIPTION}"'",
+      "quality": "'"${QUALITY}"'",
+      "meaning": "'"${MEANING}"'"
     }
   }'
 
@@ -132,7 +141,7 @@ echo
 
 Example Terminal Command:
 ```sh
-TOKEN="e1b600eee733edfdf6f56cf1b24da852" NAME="Today's List" DESCRIPTION="Sunday 7-19-20" sh curl-scripts/lists/create.sh
+ DATE="2020-08-01" TITLE="Weirdest Dream Ever" LOCATION="home" SLEEP="10pm" WAKE="7am" DESCRIPTION="my teeth fell out" QUALITY="fair" MEANING="changes are coming in my life" TOKEN=6a4694d27db15fdd39e16df0bd731a36 sh curl-scripts/dreams/create.sh
 ```
 
 Example API Response:
@@ -142,32 +151,36 @@ X-Powered-By: Express
 Access-Control-Allow-Origin: http://localhost:7165
 Vary: Origin
 Content-Type: application/json; charset=utf-8
-Content-Length: 228
-ETag: W/"e4-HJgOdo3Jm5dFRdzsiX+dzUU+mN4"
-Date: Mon, 20 Jul 2020 01:53:29 GMT
+Content-Length: 378
+ETag: W/"17a-wd9OqEq7kiRvzIY4GyNmuWcA6YI"
+Date: Sun, 09 Aug 2020 15:29:25 GMT
 Connection: keep-alive
 
-{"list":{"_id":"5f14f919768319ab3a025d19","name":"Today's List","description":"Sunday 7-19-20","owner":"5f14f836768319ab3a025d18","items":[],"createdAt":"2020-07-20T01:53:29.177Z","updatedAt":"2020-07-20T01:53:29.177Z","__v":0}}
+{"dream":{"_id":"5f3016551bb8e2fa75d90dea","date":"2020-08-01T00:00:00.000Z","title":"Weirdest Dream Ever","location":"home","sleep_time":"10pm","wake_time":"7am","description":"my teeth fell out","quality":"fair","meaning":"changes are coming in my life","owner":"5f3015751bb8e2fa75d90de8","createdAt":"2020-08-09T15:29:25.588Z","updatedAt":"2020-08-09T15:29:25.588Z","__v":0}}
 ```
 
 ---
-### PATCH /lists/:id
+### PATCH /dreams/:id
 Example Curl Request:
 ```sh
-#!/bin/bash
-
 API="http://localhost:4741"
-URL_PATH="/lists"
+URL_PATH="/dreams"
 
 curl "${API}${URL_PATH}/${ID}" \
   --include \
   --request PATCH \
   --header "Content-Type: application/json" \
---header "Authorization: Bearer ${TOKEN}" \
---data '{
-    "list": {
-      "name": "'"${NAME}"'",
-      "description": "'"${DESCRIPTION}"'"
+  --header "Authorization: Bearer ${TOKEN}" \
+  --data '{
+    "dream": {
+      "date": "'"${DATE}"'",
+      "title": "'"${TITLE}"'",
+      "location": "'"${LOCATION}"'",
+      "sleep_time": "'"${SLEEP}"'",
+      "wake_time": "'"${WAKE}"'",
+      "description": "'"${DESCRIPTION}"'",
+      "quality": "'"${QUALITY}"'",
+      "meaning": "'"${MEANING}"'"
     }
   }'
 
@@ -176,7 +189,8 @@ echo
 
 Example Terminal Command:
 ```sh
-TOKEN="e1b600eee733edfdf6f56cf1b24da852" ID=5f14f919768319ab3a025d19 NAME="Yesterday's List" DESCRIPTION="Saturday 7-18-20" sh curl-scripts/lists/update.sh
+ID="5f3016551bb8e2fa75d90dea" TOKEN="6a4694d27db15fdd39e16df0bd731a36" DATE="2020-08-06" TITLE="updated title" LOCATION="home" SLEEP="11pm" WAKE="9am" DESCRIPTION="updated description" QUALITY="great" MEANING="updated meaining" sh curl-scripts/dreams/update.sh
+
 ```
 
 Example API Response:
@@ -186,18 +200,16 @@ X-Powered-By: Express
 Access-Control-Allow-Origin: http://localhost:7165
 Vary: Origin
 ETag: W/"a-bAsFyilMr4Ra1hIU5PyoyFRunpI"
-Date: Mon, 20 Jul 2020 02:03:14 GMT
+Date: Sun, 09 Aug 2020 17:03:59 GMT
 Connection: keep-alive
 ```
 
 ---
-### DELETE /lists/:id
+### DELETE /dreams/:id
 Example Curl Request:
 ```sh
-#!/bin/bash
-
 API="http://localhost:4741"
-URL_PATH="/lists"
+URL_PATH="/dreams"
 
 curl "${API}${URL_PATH}/${ID}" \
   --include \
@@ -209,7 +221,7 @@ echo
 
 Example Terminal Command:
 ```sh
-TOKEN="e1b600eee733edfdf6f56cf1b24da852" ID=5f14f919768319ab3a025d19 sh curl-scripts/lists/destroy.sh
+ID="5f3016551bb8e2fa75d90dea" TOKEN="6a4694d27db15fdd39e16df0bd731a36" sh curl-scripts/dreams/destroy.sh
 ```
 
 Example API Response:
@@ -219,6 +231,6 @@ X-Powered-By: Express
 Access-Control-Allow-Origin: http://localhost:7165
 Vary: Origin
 ETag: W/"a-bAsFyilMr4Ra1hIU5PyoyFRunpI"
-Date: Mon, 20 Jul 2020 02:06:06 GMT
+Date: Sun, 09 Aug 2020 17:05:09 GMT
 Connection: keep-alive
 ```
