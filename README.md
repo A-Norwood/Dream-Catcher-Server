@@ -1,5 +1,5 @@
 # Dream Catcher App
-Have you ever woken up from a dream and thought "Wow, I want to remember this dream, but I know if I don't log it now, I'll never remember."? Well, this application is perfect for you. Keep your phone or computer by your bed, and as soon as you wake up from that dream, log it with the Dream Catcher App! You can log the dream, go back and edit the dream, delete the dream if you just don't want to remember anymore, and go back and read through those dreams. No more trying to rack your brain for that dream you had 2 weeks ago. They are all here and organized in your dream log.
+Have you ever woken up from a dream and thought "Wow, I want to remember this dream, but I know if I don't log it now, I'll never remember."? Well, this application is perfect for you. Keep your phone or computer by your bed, and as soon as you wake up from that dream, log it with the Dream Catcher App! You can log the dream, go back and edit the dream, delete the dream if you just don't want to remember anymore, and go back and read through those dreams. No more trying to rack your brain for that dream you had 2 weeks ago. They are all here and organized in your dream log. This is the server side of the Dream Catcher app which works with the client side for full functionality. Refer to links below.
 
 ## Links
 - [Deployed Application]()
