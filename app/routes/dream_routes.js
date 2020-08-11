@@ -72,7 +72,7 @@ router.delete('/dreams/:id', requireToken, (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next)
 })
-
+// GET to show other user's dreams
 router.get('/dreams-other', (req, res, next) => {
   Dream.find().sort({ _id: -1 })
     // .populate('dreams')
