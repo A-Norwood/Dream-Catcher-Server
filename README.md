@@ -3,9 +3,9 @@ Have you ever woken up from a dream and thought "Wow, I want to remember this dr
 
 
 ## Setup Steps
-Fork and clone this repository.
-Run `npm install` command to install all dependencies
-Use `npm run server` command to spin up the server.
+-   Fork and clone this repository.
+-   Run `npm install` command to install all dependencies
+-   Use `npm run server` command to spin up the server.
 
 ## Links
 - [Deployed Application](https://shrouded-anchorage-21234.herokuapp.com/)
