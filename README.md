@@ -3,21 +3,21 @@ Have you ever woken up from a dream and thought "Wow, I want to remember this dr
 
 ## Links
 - [Deployed Application]()
-- [Front End Repository]()
+- [Front End Repository](https://github.com/A-Norwood/Dream-Catcher-client)
 
 ## ERD
 [Link to ERD](https://imgur.com/7zF90Yf)
 
 ## Technologies Used
-- Express
-- Mongoose
-- MongoDB
-- cURL Scripts
-- -Heroku
-- -Keynote
+-   Express
+-   Mongoose
+-   MongoDB
+-   cURL Scripts
+-   Heroku
+-   Keynote
 
 ## Planning
-I started this project by first coming up with an idea that I found interesting and also useful to a user. I created an ERD and wireframes for my project for reference. To start the actual coding portion of the project I began by downloading the browser template provided, and built my routes and testing with cURL scripts along the way.
+I started this project by first coming up with an idea that I found interesting and also useful to a user. I created an ERD and wireframes for my project for reference. To start the actual coding portion of the project I began by downloading the browser template provided, and built my routes and testing with cURL scripts along the way. I then moved on to the server side of the application for full functionality.
 
 
 ## API Information
@@ -234,3 +234,6 @@ ETag: W/"a-bAsFyilMr4Ra1hIU5PyoyFRunpI"
 Date: Sun, 09 Aug 2020 17:05:09 GMT
 Connection: keep-alive
 ```
+
+## Unsolved Problems
+In future versions, I would like to rearrange in order to add a subdoc for the user's sleep. I would like to add more information about the user's sleep relating to that dream. I would like to do more with styling as well.
