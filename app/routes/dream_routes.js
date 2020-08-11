@@ -73,4 +73,13 @@ router.delete('/dreams/:id', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+router.get('/dreams-other', (req, res, next) => {
+  Dream.find().sort({ _id: -1 })
+    // .populate('dreams')
+    .then(otherDreams => {
+      res.json({dreams: otherDreams})
+    })
+    .catch(next)
+})
+
 module.exports = router
